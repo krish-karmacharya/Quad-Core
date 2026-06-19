@@ -1,17 +1,9 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import './App.css'
-import HomePage from './pages/page.jsx'
-import TermsPage from './pages/terms.jsx'
+// import { AuthProvider } from './contexts/AuthContext';
+import AppRoutes from './routes/AppRoutes';
 
-function App() {
+export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/terms" element={<TermsPage />} />
-      </Routes>
-    </BrowserRouter>
-  )
+      <AppRoutes />
+    
+  );
 }
-
-export default App

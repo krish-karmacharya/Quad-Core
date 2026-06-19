@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
-import Header from '../hooks/header.jsx'
-import Footer from '../hooks/footer.jsx'
+import Header from '../ui/header.jsx'
+import Footer from '../ui/footer.jsx'
 
 function TermsPage() {
   return (
