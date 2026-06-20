@@ -3,6 +3,7 @@ import ImageUpload from '../components/ImageUpload';
 import ResultCard from '../components/ResultCard';
 import Loader from '../components/Loader';
 import api from '../services/api';
+<<<<<<< HEAD
 import axios from 'axios';
 
 const fileToBase64 = (file) => {
@@ -16,6 +17,8 @@ const fileToBase64 = (file) => {
     reader.onerror = (error) => reject(error);
   });
 };
+=======
+>>>>>>> de51b544a16e662f1960cb6870577fde98387456
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -27,6 +30,7 @@ const Home = () => {
     setResult(null);
     setError(null);
 
+<<<<<<< HEAD
     try {
       // 1. Prepare FormData for the backend
       const formData = new FormData();
@@ -34,6 +38,12 @@ const Home = () => {
 
 
       // 4. Send to backend for license plate detection and database storage
+=======
+    const formData = new FormData();
+    formData.append('image', file);
+
+    try {
+>>>>>>> de51b544a16e662f1960cb6870577fde98387456
       const response = await api.analyzeImage(formData);
       if (response.success) {
         setResult(response.data);
