@@ -1,0 +1,28 @@
+# Node / JS
+node_modules/
+dist/
+.env
+.env.local
+.env.development
+.env.production
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+env/
+.huggingface/
+last.pt
+
+# Uploads
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Local / Backups
+back/
+.DS_Store
+.idea/
+.vscode/
+prd.md
+back/
+front/
