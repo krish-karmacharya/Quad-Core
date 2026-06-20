@@ -1,11 +1,13 @@
 require('dotenv').config();
 const app = require('./app');
 const connectDB = require('./config/db');
+const validateEnv = require('./utils/validateEnv');
 
 const port = process.env.PORT || 5000;
 
 async function startServer() {
   try {
+    validateEnv();
     await connectDB();
 
     app.listen(port, () => {

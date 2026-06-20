@@ -14,6 +14,15 @@ function errorHandler(error, req, res, next) {
     });
   }
 
+  if (error.name === 'ValidationError') {
+    return res.status(400).json({
+      success: false,
+      message: Object.values(error.errors)
+        .map((item) => item.message)
+        .join(', ')
+    });
+  }
+
   return res.status(statusCode).json({
     success: false,
     message: error.message || 'Server error',

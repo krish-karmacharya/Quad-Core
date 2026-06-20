@@ -1,6 +1,7 @@
 const fs = require('fs');
 const axios = require('axios');
 const FormData = require('form-data');
+const httpError = require('../utils/httpError');
 
 function normalizeSmokeLevel(level) {
   const value = String(level || 'none').toLowerCase();
@@ -120,18 +121,33 @@ async function analyzeVehicleSmoke(filePath, req) {
   const aiServiceUrl = process.env.AI_SERVICE_URL;
 
   if (!aiServiceUrl) {
-    throw new Error('AI_SERVICE_URL is missing');
+    throw httpError(500, 'AI_SERVICE_URL is missing');
   }
 
   const form = new FormData();
   form.append('image', fs.createReadStream(filePath));
 
-  const response = await axios.post(aiServiceUrl, form, {
-    headers: form.getHeaders(),
-    timeout: 60000
-  });
+  try {
+    const response = await axios.post(aiServiceUrl, form, {
+      headers: form.getHeaders(),
+      timeout: 60000
+    });
 
-  return normalizeResult(response.data);
+    return normalizeResult(response.data);
+  } catch (error) {
+    if (error.response) {
+      throw httpError(
+        502,
+        `AI service failed with status ${error.response.status}`
+      );
+    }
+
+    if (error.code === 'ECONNABORTED') {
+      throw httpError(504, 'AI service timed out. Please try again.');
+    }
+
+    throw httpError(503, 'AI service is unavailable. Please try again later.');
+  }
 }
 
 module.exports = { analyzeVehicleSmoke };

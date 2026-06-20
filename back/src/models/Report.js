@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { computeSeverity } = require('../utils/severity');
 
 const detectionSchema = new mongoose.Schema(
   {
@@ -105,6 +106,22 @@ const reportSchema = new mongoose.Schema(
       enum: ['none', 'low', 'medium', 'heavy'],
       default: 'none'
     },
+    severityIndex: {
+      type: Number,
+      min: 0,
+      max: 100,
+      default: 0
+    },
+    severity: {
+      type: String,
+      enum: ['none', 'low', 'medium', 'high', 'critical'],
+      default: 'none'
+    },
+    recommendedAction: {
+      type: String,
+      trim: true,
+      default: 'No action required'
+    },
     confidenceScore: {
       type: Number,
       min: 0,
@@ -145,8 +162,24 @@ const reportSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+reportSchema.pre('save', function computeSeverityFields(next) {
+  const severity = computeSeverity({
+    smokeDetected: this.smokeDetected,
+    smokeLevel: this.smokeLevel,
+    confidenceScore: this.confidenceScore,
+    licensePlateDetection: this.licensePlateDetection
+  });
+
+  this.severityIndex = severity.severityIndex;
+  this.severity = severity.severity;
+  this.recommendedAction = severity.recommendedAction;
+  next();
+});
+
 reportSchema.index({ status: 1, createdAt: -1 });
 reportSchema.index({ user: 1, createdAt: -1 });
+reportSchema.index({ severityIndex: -1, createdAt: -1 });
+reportSchema.index({ severity: 1, createdAt: -1 });
 reportSchema.index({ latitude: 1, longitude: 1 });
 
 module.exports = mongoose.model('Report', reportSchema);
