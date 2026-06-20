@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { login } from '../services/adminApi';
+import { login, getMe } from '../services/adminApi';
 
 const AdminLogin = () => {
   const [email, setEmail] = useState('');
@@ -9,12 +9,20 @@ const AdminLogin = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  // Redirect if already logged in
+  // Redirect if already logged in with valid admin session
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      navigate('/admin/dashboard');
-    }
+    const verifyAdminSession = async () => {
+      try {
+        const response = await getMe();
+        if (response.success && response.user?.role === 'admin') {
+          navigate('/admin/dashboard');
+        }
+      } catch {
+        // no existing session, allow login
+      }
+    };
+
+    verifyAdminSession();
   }, [navigate]);
 
   const handleSubmit = async (e) => {

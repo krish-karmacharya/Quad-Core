@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import AdminNavbar from '../components/AdminNavbar';
 import AdminSidebar from '../components/AdminSidebar';
 import DetectionReviewCard from '../components/DetectionReviewCard';
@@ -59,7 +59,9 @@ const AdminDetections = () => {
   };
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchDetections();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeFilter]);
 
   return (
@@ -69,11 +71,11 @@ const AdminDetections = () => {
         <AdminSidebar />
         
         {/* Main Content Pane */}
-        <main className="flex-1 pl-64 pt-16 min-h-screen">
+        <main className="flex-1 pl-60 pt-16 min-h-screen">
           <div className="p-8 max-w-5xl mx-auto flex flex-col gap-6">
             <div>
-              <h1 className="text-3xl font-extrabold tracking-tight">Detections Queue</h1>
-              <p className="text-slate-400 text-sm mt-1">Review the incoming AI predictions and confirm or reject records.</p>
+              <h1 className="text-3xl font-semibold tracking-tight">Detections</h1>
+              <p className="text-slate-400 text-sm mt-1">Filter, review, and close reports.</p>
             </div>
 
             {/* Filters Bar */}
@@ -84,7 +86,7 @@ const AdminDetections = () => {
                   onClick={() => setActiveFilter(opt.key)}
                   className={`px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wider transition ${
                     activeFilter === opt.key
-                      ? 'bg-emerald-500 text-slate-950 font-bold'
+                      ? 'minimal-primary font-semibold'
                       : 'bg-slate-900 hover:bg-slate-850 text-slate-400 hover:text-white border border-slate-800'
                   }`}
                 >
@@ -96,7 +98,7 @@ const AdminDetections = () => {
             {/* List Section */}
             {isLoading ? (
               <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 flex justify-center">
-                <Loader message="Loading filtered queue..." />
+                <Loader message="Loading queue..." />
               </div>
             ) : error ? (
               <div className="bg-rose-500/10 border border-rose-500/20 rounded-2xl p-6 text-center text-rose-400">

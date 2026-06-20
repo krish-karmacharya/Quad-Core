@@ -1,1 +1,243 @@
 @import "tailwindcss";
+
+:root {
+  color-scheme: light;
+  --page: #f7f7f5;
+  --surface: #ffffff;
+  --surface-muted: #f1f1ee;
+  --line: #deded8;
+  --line-strong: #c8c8c0;
+  --text: #181816;
+  --muted: #6d6d66;
+  --faint: #9a9a91;
+  --accent: #5465ff;
+  --accent-light: #788bff;
+  --accent-soft: #9bb1ff;
+  --accent-muted: #bfd7ff;
+  --accent-faint: #e2fdff;
+  --danger: #b42318;
+  --warning: #9a5b00;
+  --success: #146c43;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--page);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--page);
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+::selection {
+  background: #d8d8d0;
+  color: var(--text);
+}
+
+.bg-slate-950,
+.bg-gray-950 {
+  background-color: var(--page) !important;
+}
+
+.bg-slate-900,
+.bg-slate-905,
+.bg-slate-850,
+.bg-gray-900,
+.bg-white,
+.bg-white\/80 {
+  background-color: var(--surface) !important;
+}
+
+.bg-slate-800,
+.bg-slate-700,
+.bg-gray-700,
+.bg-gray-700\/50,
+.bg-slate-900\/80,
+.bg-slate-950\/80,
+.bg-slate-950\/60,
+.bg-slate-900\/60,
+.bg-slate-950\/50,
+.bg-slate-900\/50,
+.bg-slate-800\/50,
+.bg-slate-950\/40,
+.bg-slate-900\/20,
+.bg-slate-950\/20,
+.bg-slate-900\/10,
+.bg-slate-800\/10,
+.bg-white\/5,
+.bg-white\/10,
+.hover\:bg-white\/5:hover,
+.hover\:bg-slate-850:hover,
+.hover\:bg-gray-700\/50:hover {
+  background-color: var(--surface-muted) !important;
+}
+
+.bg-gradient-to-r,
+.from-emerald-400,
+.from-emerald-500,
+.to-teal-400,
+.to-teal-300,
+.bg-emerald-500,
+.hover\:bg-emerald-500:hover,
+.hover\:bg-emerald-600:hover,
+.bg-indigo-500,
+.hover\:bg-indigo-400:hover {
+  background-image: none !important;
+  background-color: var(--accent) !important;
+  color: #ffffff !important;
+}
+
+.bg-emerald-500\/5,
+.bg-emerald-500\/10,
+.bg-emerald-500\/15,
+.bg-emerald-500\/20,
+.bg-emerald-500\/30,
+.bg-blue-500\/10 {
+  background-color: var(--accent-faint) !important;
+}
+
+.bg-orange-500\/10,
+.bg-orange-500\/15,
+.bg-orange-500\/20,
+.bg-amber-500\/10,
+.bg-amber-500\/15,
+.bg-rose-500\/10,
+.bg-rose-500\/15,
+.bg-rose-500\/20,
+.bg-slate-500\/10,
+.bg-slate-500\/15 {
+  background-color: var(--surface-muted) !important;
+}
+
+.text-white,
+.text-transparent,
+.text-slate-50,
+.text-slate-100,
+.text-slate-200,
+.text-slate-300,
+.text-slate-800,
+.text-slate-900,
+.text-slate-950,
+.text-gray-300,
+.text-gray-700 {
+  color: var(--text) !important;
+}
+
+.text-slate-400,
+.text-slate-500,
+.text-slate-505,
+.text-slate-550,
+.text-gray-400,
+.text-gray-500,
+.text-gray-600 {
+  color: var(--muted) !important;
+}
+
+.text-emerald-300,
+.text-emerald-400,
+.text-emerald-505,
+.text-emerald-500,
+.text-emerald-600,
+.text-blue-400,
+.text-blue-500 {
+  color: var(--accent) !important;
+}
+
+.text-amber-400,
+.text-orange-400,
+.text-orange-500 {
+  color: var(--warning) !important;
+}
+
+.text-rose-200,
+.text-rose-300,
+.text-rose-400,
+.text-rose-500 {
+  color: var(--danger) !important;
+}
+
+.border-emerald-500\/20,
+.border-emerald-500\/30,
+.border-blue-500\/20,
+.border-blue-500\/30,
+.border-slate-800,
+.border-slate-700 {
+  border-color: var(--accent-muted) !important;
+}
+
+.border-slate-805,
+.border-slate-600,
+.border-gray-700,
+.border-white,
+.border-white\/10,
+.border-white\/20,
+.border-amber-500\/20,
+.border-amber-500\/30,
+.border-orange-500\/20,
+.border-orange-500\/30,
+.border-rose-500\/20,
+.border-rose-500\/25,
+.border-rose-500\/30,
+.border-slate-500\/20,
+.border-slate-500\/30,
+.border-slate-700\/20,
+.border-slate-700\/30 {
+  border-color: var(--line) !important;
+}
+
+.shadow-sm,
+.shadow-md,
+.shadow-lg,
+.shadow-xl,
+.shadow-2xl,
+.shadow-emerald-500\/10,
+.hover\:shadow-emerald-500\/20:hover {
+  box-shadow: none !important;
+}
+
+.rounded-3xl,
+.rounded-2xl,
+.rounded-xl,
+.rounded-lg {
+  border-radius: 8px !important;
+}
+
+.focus\:border-emerald-400:focus,
+.focus\:ring-emerald-400:focus,
+.focus-visible\:outline-indigo-500:focus-visible,
+.focus\:outline-blue-500:focus {
+  border-color: var(--accent) !important;
+  outline-color: var(--accent) !important;
+  --tw-ring-color: var(--accent) !important;
+}
+
+.minimal-primary {
+  background: var(--accent) !important;
+  color: #ffffff !important;
+}
+
+.minimal-primary:hover {
+  background: var(--accent-light) !important;
+}

@@ -1,5 +1,3 @@
-import React from 'react';
-
 const ReviewStatusBadge = ({ status }) => {
   const getBadgeStyles = () => {
     switch (status) {

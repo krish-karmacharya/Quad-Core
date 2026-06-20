@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import AdminNavbar from '../components/AdminNavbar';
 import AdminSidebar from '../components/AdminSidebar';
@@ -51,16 +51,16 @@ const AdminDashboard = () => {
         <AdminSidebar />
         
         {/* Main container with offset for sidebar */}
-        <main className="flex-1 pl-64 pt-16 min-h-screen">
-          <div className="p-8 max-w-7xl mx-auto flex flex-col gap-8">
+        <main className="flex-1 pl-60 pt-16 min-h-screen">
+          <div className="p-8 max-w-7xl mx-auto flex flex-col gap-7">
             <div>
-              <h1 className="text-3xl font-extrabold tracking-tight">Admin Dashboard</h1>
-              <p className="text-slate-400 text-sm mt-1">Real-time statistics and overview of AI pollution reports.</p>
+              <h1 className="text-3xl font-semibold tracking-tight">Dashboard</h1>
+              <p className="text-slate-400 text-sm mt-1">Report volume and review activity.</p>
             </div>
 
             {isLoading ? (
-              <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 shadow-xl flex justify-center">
-                <Loader message="Gathering telemetry and aggregating reports..." />
+              <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 flex justify-center">
+                <Loader message="Loading dashboard..." />
               </div>
             ) : error ? (
               <div className="bg-rose-500/10 border border-rose-500/20 rounded-2xl p-6 text-center text-rose-400">
@@ -134,11 +134,11 @@ const AdminDashboard = () => {
                 </div>
 
                 {/* Recent Detections List */}
-                <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-xl mt-4">
+                <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 mt-2">
                   <div className="flex justify-between items-center mb-6">
-                    <h3 className="text-lg font-bold text-slate-100">Recent Upload Detections</h3>
-                    <Link to="/admin/detections" className="text-emerald-400 hover:text-emerald-300 text-xs font-semibold hover:underline">
-                      View All Queue →
+                    <h3 className="text-base font-semibold text-slate-100">Recent Uploads</h3>
+                    <Link to="/admin/detections" className="text-slate-500 hover:text-slate-950 text-xs font-semibold hover:underline">
+                      View queue
                     </Link>
                   </div>
                   

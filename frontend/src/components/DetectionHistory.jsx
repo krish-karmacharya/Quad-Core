@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ResultCard from './ResultCard';
 
-const DetectionHistory = ({ detections, onDelete }) => {
+const DetectionHistory = ({ detections }) => {
   const [expandedId, setExpandedId] = useState(null);
 
   const toggleExpand = (id) => {
@@ -26,7 +26,7 @@ const DetectionHistory = ({ detections, onDelete }) => {
     return (
       <div className="text-center py-12 bg-slate-900/50 rounded-2xl border border-slate-800 p-6">
         <p className="text-slate-400 text-lg">No detection history available.</p>
-        <p className="text-slate-505 text-sm mt-1">Upload a vehicle image on the home page to start!</p>
+        <p className="text-slate-550 text-sm mt-1">Upload a vehicle image on the home page to start!</p>
       </div>
     );
   }
@@ -107,19 +107,6 @@ const DetectionHistory = ({ detections, onDelete }) => {
                   >
                     <svg className={`w-5 h-5 transform transition ${isExpanded ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
-                  <button
-                    onClick={() => {
-                      if (window.confirm("Are you sure you want to delete this detection record?")) {
-                        onDelete(item._id);
-                      }
-                    }}
-                    className="text-rose-500 hover:text-rose-400 p-1 hover:bg-rose-500/10 rounded transition"
-                    title="Delete"
-                  >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                     </svg>
                   </button>
                 </div>

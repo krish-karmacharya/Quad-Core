@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import AdminNavbar from '../components/AdminNavbar';
 import AdminSidebar from '../components/AdminSidebar';
@@ -46,7 +46,9 @@ const AdminDetectionDetail = () => {
   };
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchDetail();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   const handleVerify = async () => {
@@ -96,7 +98,7 @@ const AdminDetectionDetail = () => {
         <AdminNavbar />
         <div className="flex">
           <AdminSidebar />
-          <main className="flex-1 pl-64 pt-16 min-h-screen flex justify-center items-center">
+          <main className="flex-1 pl-60 pt-16 min-h-screen flex justify-center items-center">
             <Loader message="Loading report detail context..." />
           </main>
         </div>
@@ -110,7 +112,7 @@ const AdminDetectionDetail = () => {
         <AdminNavbar />
         <div className="flex">
           <AdminSidebar />
-          <main className="flex-1 pl-64 pt-16 min-h-screen p-8 flex flex-col gap-4">
+          <main className="flex-1 pl-60 pt-16 min-h-screen p-8 flex flex-col gap-4">
             <Link to="/admin/detections" className="text-emerald-400 text-sm hover:underline flex items-center gap-1">
               ← Back to Queue
             </Link>
@@ -144,15 +146,15 @@ const AdminDetectionDetail = () => {
       <div className="flex">
         <AdminSidebar />
 
-        <main className="flex-1 pl-64 pt-16 min-h-screen">
+        <main className="flex-1 pl-60 pt-16 min-h-screen">
           <div className="p-8 max-w-5xl mx-auto flex flex-col gap-6">
             <div className="flex justify-between items-center flex-wrap gap-4 border-b border-slate-800 pb-4">
               <div>
                 <Link to="/admin/detections" className="text-slate-550 hover:text-slate-300 text-xs font-semibold hover:underline mb-1 block">
                   ← Back to Queue
                 </Link>
-                <h1 className="text-2xl font-black text-slate-100 flex items-center gap-3">
-                  Review Report Details
+                <h1 className="text-2xl font-semibold text-slate-100 flex items-center gap-3">
+                  Review Report
                   <ReviewStatusBadge status={reviewStatus} />
                 </h1>
               </div>
@@ -161,7 +163,7 @@ const AdminDetectionDetail = () => {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
               {/* Left Column: Image Context (7/12) */}
               <div className="lg:col-span-7 flex flex-col gap-4">
-                <div className="bg-slate-905 border border-slate-800 p-3 rounded-2xl overflow-hidden shadow-lg aspect-video flex justify-center items-center">
+                <div className="bg-slate-905 border border-slate-800 p-3 rounded-2xl overflow-hidden aspect-video flex justify-center items-center">
                   <img
                     src={fullImageUrl}
                     alt={originalFileName}
@@ -185,7 +187,7 @@ const AdminDetectionDetail = () => {
               {/* Right Column: Decisions (5/12) */}
               <div className="lg:col-span-5 flex flex-col gap-6">
                 {/* AI Outputs summary */}
-                <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-lg flex flex-col gap-4">
+                <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 flex flex-col gap-4">
                   <h3 className="font-bold text-slate-200 text-sm border-b border-slate-800 pb-2">AI Predictions Summary</h3>
                   
                   {/* Smoke */}
@@ -234,7 +236,7 @@ const AdminDetectionDetail = () => {
                 </div>
 
                 {/* Form Controls */}
-                <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-lg flex flex-col gap-4">
+                <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 flex flex-col gap-4">
                   <h3 className="font-bold text-slate-200 text-sm border-b border-slate-800 pb-2">Verification Actions</h3>
 
                   <div className="flex flex-col gap-1">
@@ -279,7 +281,7 @@ const AdminDetectionDetail = () => {
                       <button
                         onClick={handleVerify}
                         disabled={submitting}
-                        className="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold py-2.5 rounded-xl transition cursor-pointer"
+                        className="minimal-primary font-semibold py-2.5 rounded-xl transition cursor-pointer"
                       >
                         Verify Report
                       </button>

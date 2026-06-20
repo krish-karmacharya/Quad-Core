@@ -1,5 +1,3 @@
-import React from 'react';
-
 const ResultCard = ({ result }) => {
   if (!result) return null;
 
@@ -8,8 +6,7 @@ const ResultCard = ({ result }) => {
     smokeDetection = {},
     licensePlateDetection = {},
     reviewStatus,
-    adminReview = {},
-    status
+    adminReview = {}
   } = result;
 
   const backendUrl = import.meta.env.VITE_API_URL ? import.meta.env.VITE_API_URL.replace('/api', '') : 'http://localhost:5000';

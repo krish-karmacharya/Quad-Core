@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { logout } from '../services/adminApi';
 
@@ -7,27 +6,32 @@ const AdminNavbar = () => {
   const userJson = localStorage.getItem('user');
   const user = userJson ? JSON.parse(userJson) : null;
 
-  const handleLogout = () => {
-    logout();
-    navigate('/admin/login');
+  const handleLogout = async () => {
+    try {
+      await logout();
+    } catch (error) {
+      console.error(error);
+    } finally {
+      navigate('/login');
+    }
   };
 
   return (
-    <nav className="bg-slate-900 border-b border-slate-800 text-white h-16 px-6 flex justify-between items-center fixed top-0 left-0 right-0 z-40 shadow-md">
+    <nav className="bg-slate-900 border-b border-slate-800 text-white h-16 px-5 flex justify-between items-center fixed top-0 left-0 right-0 z-40">
       <div className="flex items-center gap-4">
         <Link to="/admin/dashboard" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center font-bold text-slate-950">
+          <div className="w-8 h-8 rounded-lg border border-slate-800 flex items-center justify-center font-semibold text-xs">
             A
           </div>
-          <span className="text-lg font-bold tracking-tight bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent hidden sm:inline">
-            SmokePlate AI <span className="text-xs text-slate-400 font-semibold uppercase tracking-wider ml-1">Admin</span>
+          <span className="text-sm font-semibold tracking-tight hidden sm:inline">
+            SmokePlate <span className="text-xs text-slate-400 font-medium ml-1">Admin</span>
           </span>
         </Link>
       </div>
 
-      <div className="flex items-center gap-6">
+      <div className="flex items-center gap-5">
         <Link to="/" className="text-sm text-slate-400 hover:text-white transition">
-          View Website
+          Public site
         </Link>
         {user && (
           <div className="hidden md:flex flex-col text-right text-xs">
@@ -37,7 +41,7 @@ const AdminNavbar = () => {
         )}
         <button
           onClick={handleLogout}
-          className="bg-slate-800 hover:bg-slate-700 text-rose-400 hover:text-rose-300 text-sm font-semibold px-4 py-1.5 rounded-lg border border-slate-700 hover:border-slate-600 transition"
+          className="bg-slate-900 hover:bg-slate-800 text-rose-500 text-sm font-medium px-3 py-1.5 rounded-lg border border-slate-800 transition"
         >
           Logout
         </button>

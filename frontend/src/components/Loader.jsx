@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Loader = ({ message = "Analyzing image. Please wait..." }) => {
   return (
     <div className="flex flex-col items-center justify-center py-12 px-4">
