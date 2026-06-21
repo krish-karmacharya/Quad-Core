@@ -15,14 +15,11 @@ env/
 last.pt
 
 # Uploads
-backend/uploads/*
-!backend/uploads/.gitkeep
+
 
 # Local / Backups
-back/
+
 .DS_Store
 .idea/
 .vscode/
 prd.md
-back/
-front/
