@@ -1,0 +1,9 @@
+node_modules
+.env
+uploads/*
+ai-service-stub/outputs/*
+!uploads/.gitkeep
+!uploads/reports/.gitkeep
+!uploads/processed/.gitkeep
+npm-debug.log*
+.DS_Store
