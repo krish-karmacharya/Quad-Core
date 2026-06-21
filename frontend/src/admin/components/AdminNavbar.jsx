@@ -20,19 +20,13 @@ const AdminNavbar = () => {
     <nav className="bg-slate-900 border-b border-slate-800 text-white h-16 px-5 flex justify-between items-center fixed top-0 left-0 right-0 z-40">
       <div className="flex items-center gap-4">
         <Link to="/admin/dashboard" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg border border-slate-800 flex items-center justify-center font-semibold text-xs">
-            A
-          </div>
-          <span className="text-sm font-semibold tracking-tight hidden sm:inline">
+          <span className="text-sm font-semibold tracking-tight">
             SmokePlate <span className="text-xs text-slate-400 font-medium ml-1">Admin</span>
           </span>
         </Link>
       </div>
 
       <div className="flex items-center gap-5">
-        <Link to="/" className="text-sm text-slate-400 hover:text-white transition">
-          Public site
-        </Link>
         {user && (
           <div className="hidden md:flex flex-col text-right text-xs">
             <span className="font-semibold text-slate-200">{user.name}</span>

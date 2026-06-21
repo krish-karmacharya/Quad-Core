@@ -51,9 +51,8 @@ const Home = () => {
       <div className="min-h-[calc(100vh-61px)] bg-slate-950 text-white px-5 py-10 flex items-center justify-center">
         <div className="w-full max-w-4xl">
           {result ? (
-            /* Success confirmation view */
             <div className="w-full max-w-md mx-auto border border-slate-800 bg-slate-900 rounded-2xl p-8 flex flex-col items-center text-center transition duration-200 hover:border-slate-700 shadow-xl">
-              <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-6 text-emerald-400 animate-pulse">
+              <div className="w-16 h-16 flex items-center justify-center mb-6 text-emerald-400 animate-pulse">
                 <svg className="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
                 </svg>
@@ -141,7 +140,7 @@ const Home = () => {
 
         <section className="w-full flex flex-col gap-6">
           <div className="w-full bg-slate-900 border border-slate-800 rounded-2xl p-8 flex flex-col items-center text-center transition duration-200 hover:border-slate-700">
-            <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-6 text-emerald-400">
+            <div className="w-16 h-16 flex items-center justify-center mb-6 text-emerald-400">
               <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
               </svg>
