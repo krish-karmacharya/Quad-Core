@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+python-multipart
+pillow==11.3.0
+requests==2.32.4
+inference-sdk
+ultralytics
+huggingface_hub
+easyocr
+opencv-python
